@@ -27,6 +27,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         //TimerReset();
+        stopTime = GameManager.instance?.GlobalTime1 ?? 0f;
         TimerStart();
     }
 
@@ -70,6 +71,10 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timerTime = stopTime + (Time.time - startTime);
+        if (isRunning && GameManager.instance != null)
+        {
+            GameManager.instance.GlobalTime1 = timerTime;
+        }
         int minutesInt = (int)timerTime / 60;
         int secondsInt = (int)timerTime % 60;
         int seconds100Int = (int)(Mathf.Floor((timerTime - (secondsInt + minutesInt * 60)) * 100));
