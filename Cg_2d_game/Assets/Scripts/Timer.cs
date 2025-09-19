@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //TimerReset();
+        TimerStart();
     }
 
     public void InitializeFromGlobal(float elapsed)
