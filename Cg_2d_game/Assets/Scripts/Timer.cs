@@ -23,11 +23,18 @@ public class Timer : MonoBehaviour
     private float timerTime;
     private bool isRunning = false;
 
+    public float CurrentTime => timerTime;
+
     // Use this for initialization
     void Start()
     {
         //TimerReset();
-        TimerStart();
+    }
+
+    public void InitializeFromGlobal(float elapsed)
+    {
+        stopTime = timerTime = elapsed;
+        UpdateTimerDisplay(timerTime);
     }
 
     public void TimerStart()
@@ -56,7 +63,7 @@ public class Timer : MonoBehaviour
             //    respuestaAudio.clip = stop;
             //    respuestaAudio.Play();
             //}
-            //añadir un return para que pueda pasarle el dato del tiempo total hasta que se pause el tiempo a gamemanager
+            //aadir un return para que pueda pasarle el dato del tiempo total hasta que se pause el tiempo a gamemanager
         }
     }
 
@@ -71,16 +78,24 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timerTime = stopTime + (Time.time - startTime);
-        int minutesInt = (int)timerTime / 60;
-        int secondsInt = (int)timerTime % 60;
-        int seconds100Int = (int)(Mathf.Floor((timerTime - (secondsInt + minutesInt * 60)) * 100));
-
         if (isRunning)
         {
-            timerMinutes.text = (minutesInt < 10) ? "0" + minutesInt : minutesInt.ToString();
-            timerSeconds.text = (secondsInt < 10) ? "0" + secondsInt : secondsInt.ToString();
-            timerSeconds100.text = (seconds100Int < 10) ? "0" + seconds100Int : seconds100Int.ToString();
+            timerTime = stopTime + (Time.time - startTime);
+            UpdateTimerDisplay(timerTime);
         }
+        else
+        {
+            timerTime = stopTime;
+        }
+    }
+
+    private void UpdateTimerDisplay(float time)
+    {
+        int minutesInt = (int)time / 60;
+        int secondsInt = (int)time % 60;
+        int seconds100Int = (int)(Mathf.Floor((time - (secondsInt + minutesInt * 60)) * 100));
+        timerMinutes.text = (minutesInt < 10) ? "0" + minutesInt : minutesInt.ToString();
+        timerSeconds.text = (secondsInt < 10) ? "0" + secondsInt : secondsInt.ToString();
+        timerSeconds100.text = (seconds100Int < 10) ? "0" + seconds100Int : seconds100Int.ToString();
     }
 }
