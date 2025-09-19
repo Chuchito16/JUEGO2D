@@ -31,6 +31,6 @@ public class GameManager : MonoBehaviour
     }
     public void SumaTimeGlobal(float timescene)
     {
-
+        GlobalTime += timescene;
     }
 }
