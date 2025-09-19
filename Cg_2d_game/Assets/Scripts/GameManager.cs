@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private float GlobalTime=0;
+    private float GlobalTime = 0;
 
     public float GlobalTime1 { get => GlobalTime; set => GlobalTime = value; }
 
@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void SumaTimeGlobal(float timescene)
     {

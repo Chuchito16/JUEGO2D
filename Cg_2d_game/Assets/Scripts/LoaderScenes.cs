@@ -16,6 +16,7 @@ public class LoaderScenes : MonoBehaviour
     }
     public void lectorEscena(string nameScene)
     {
+        //añadir aca un metodo para devolver el valor del tiempo que llevamos y lo devolvemos al timer
         SceneManager.LoadScene(nameScene);
     }
 }
