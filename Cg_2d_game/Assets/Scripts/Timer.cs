@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
 
     public float CurrentTime => timerTime;
 
-    // Use this for initialization
+    
     void Start()
     {
         TimerStart();
@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
             startTime = Time.time;
         }
 
-        //crear un else donde reciba el valor del tiempo cambiado en el loaderscenes para empezar un timer a partir del tiempo que ya llevamos
+        
     }
 
     public void TimerStop()
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
             //    respuestaAudio.clip = stop;
             //    respuestaAudio.Play();
             //}
-            //aadir un return para que pueda pasarle el dato del tiempo total hasta que se pause el tiempo a gamemanager
+            
         }
     }
 
